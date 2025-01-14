@@ -21,7 +21,7 @@ const PriceWidget: React.FC = () => {
         const data = await response.json()
 
         setAssets(Object.values(data) as Asset[])
-        
+
         // Check icons for all assets
         for (const asset of Object.values(data) as Asset[]) {
           await checkImageExists(asset.symbol)
@@ -67,29 +67,29 @@ const PriceWidget: React.FC = () => {
       <table className="min-w-full bg-white rounded-lg overflow-hidden">
         <thead className="bg-gray-100">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Coin</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Coin</th>
+            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
           {Object.keys(assets).map((asset:any, i) => (
             <tr key={assets[asset].symbol} className="hover:bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {iconCache[assets[asset].symbol] && (
-                  <img src={`/assets/icons/${assets[asset].symbol}.svg`} className="max-w-[2rem]" />
-                )} 
+              <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 {i + 1}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500 flex items-center">
+                {iconCache[assets[asset].symbol] && (
+                  <img src={`/assets/icons/${assets[asset].symbol}.svg`} className="max-w-[2rem]" />
+                )}&nbsp;
                 {assets[asset].name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500">
                 {assets[asset].symbol}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                ${assets[asset].last_price}
+              <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500">
+                ${assets[asset].last_price.toFixed(2)}
               </td>
             </tr>
           ))}
