@@ -1,7 +1,9 @@
 import * as React from "react"
 import { Home as HomeIcon } from "@styled-icons/fa-solid"
 import { Wallet as WalletIcon } from "@styled-icons/fa-solid"
+import { Sun as SunIcon } from "@styled-icons/fa-solid"
 import { Link } from "gatsby"
+import ThemeToggle from "./ThemeToggle"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -16,8 +18,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }
 
   return (
-    <>
-      <header className="text-center mb-4">
+    <div className="bg-white dark:bg-gray-900 text-black dark:text-white">
+      <header className="text-center mb-4 relative">
         <nav>
           <ul className="flex justify-center items-center text-xs">
             <Link to="/" className={getLinkClassName('/')}>
@@ -28,11 +30,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </Link>
           </ul>
         </nav>
+        <ThemeToggle className="w-[1.5rem] absolute right-2 cursor-pointer top-[50%] translate-y-[-50%]" />
       </header>
       <main>
         {children}
       </main>
-    </>
+    </div>
   )
 }
 

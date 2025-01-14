@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  &.dark {
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
+  }
+}
+
+body {
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
